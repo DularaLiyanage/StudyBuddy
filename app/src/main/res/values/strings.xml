@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StudyBuddy</string>
+    <string name="AddPlans">Add Plans</string>
+    <string name="Enter_the_title">Enter the Title</string>
+    <string name="Enter_the_description">Enter the Description</string>
+    <string name="study_buddy">Study Buddy</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="EditPlan">Edit Plan</string>
+    <string name="Enter_the_priority">Enter the Priority</string>
+    <string name="Enter_the_deadline">Enter the Deadline</string>
+    <string name="priority">Priority</string>
+    <string name="deadline">Deadline</string>
+</resources>
