@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/studybuddy_background2"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,7 +18,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins"
         android:text="@string/study_buddy"
-        android:textColor="@color/blue"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
     <SearchView
