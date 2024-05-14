@@ -2,6 +2,7 @@ package com.example.studybuddy
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.studybuddy.databinding.ActivityMainBinding
@@ -34,7 +35,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (!newText.isNullOrEmpty()) {
+                    viewModel.searchPlans(newText)
+                } else {
+                    viewModel.loadPlans()
+                }
+                return true
+            }
+        })
     }
 
     override fun onResume() {

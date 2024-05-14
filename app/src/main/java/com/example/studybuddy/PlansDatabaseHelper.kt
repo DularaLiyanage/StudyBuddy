@@ -101,4 +101,32 @@ class PlansDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         db.delete(TABLE_NAME, whereClause, whereArgs)
         db.close()
     }
+
+    fun searchPlansByTitle(query: String): List<Plan> {
+        val plansList = mutableListOf<Plan>()
+        val db = readableDatabase
+        val cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_ID, COLUMN_TITLE, COLUMN_CONTENT, COLUMN_PRIORITY, COLUMN_DEADLINE),
+            "$COLUMN_TITLE LIKE ?",
+            arrayOf("%$query%"),
+            null,
+            null,
+            null
+        )
+
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+            val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
+            val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+            val priority = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PRIORITY))
+            val deadline = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DEADLINE))
+
+            val plan = Plan(id, title, content, priority, deadline)
+            plansList.add(plan)
+        }
+        cursor.close()
+        db.close()
+        return plansList
+    }
 }

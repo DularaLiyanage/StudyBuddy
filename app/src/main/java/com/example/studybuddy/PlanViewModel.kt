@@ -35,4 +35,8 @@ class PlanViewModel(application: Application) : AndroidViewModel(application) {
         db.deletePlan(planId)
         loadPlans()
     }
+
+    fun searchPlans(query: String) {
+        _plans.value = db.searchPlansByTitle(query)
+    }
 }
